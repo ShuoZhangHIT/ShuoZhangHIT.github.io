@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Curriculum Vitae · Shuo Zhang</title>
+<style>
+  :root{
+    --ink:#1c2230; --ink-soft:#4a5468; --line:#e3e7ef; --accent:#3b5bdb;
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#eef1f6;color:var(--ink);font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6}
+  .cv__bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:12px 22px;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .cv__bar a{color:var(--ink-soft);text-decoration:none;font-size:.9rem}
+  .cv__bar a:hover{color:var(--accent)}
+  .cv__lang{margin-left:auto;display:flex;gap:4px}
+  .cv__lang button{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+    font-size:.82rem;padding:4px 10px;border-radius:8px}
+  .cv__lang button.is-active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .cv__btn{cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:#fff;
+    font-size:.82rem;padding:5px 12px;border-radius:8px;text-decoration:none}
+  .cv__btn--ghost{background:#fff;color:var(--accent)}
+  main.cv{max-width:840px;margin:0 auto;padding:40px 30px 80px;background:#fff;
+    box-shadow:0 10px 40px rgba(20,30,60,.08);min-height:100vh}
+  .cv__head{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:6px}
+  .cv__name{font-family:"Spectral",serif;font-size:2.1rem;font-weight:700;letter-spacing:.3px}
+  .cv__role{color:var(--accent);font-size:1.02rem;margin-top:2px}
+  .cv__aff{color:var(--ink-soft);font-size:.92rem;margin-top:2px}
+  .cv__contact{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.86rem;color:var(--ink-soft)}
+  .cv__contact a{color:var(--ink-soft);text-decoration:none}
+  .cv__contact a:hover{color:var(--accent);text-decoration:underline}
+  .cv__sec{margin-top:30px}
+  .cv__h{font-family:"Spectral",serif;font-size:1.15rem;font-weight:700;letter-spacing:.4px;
+    text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .cv__h::before{content:'';width:30px;height:3px;background:var(--spectrum);border-radius:3px}
+  .cv__edu{border-left:2px solid var(--line);padding-left:16px;margin-left:4px}
+  .cv__edu .y{color:var(--accent);font-weight:600;font-size:.9rem}
+  .cv__edu .d{font-weight:600}
+  .cv__edu .s{color:var(--ink-soft);font-size:.9rem}
+  .cv__int{display:grid;grid-template-columns:1fr;gap:12px}
+  .cv__int .it{border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .cv__int .it h4{font-size:1rem;margin-bottom:4px}
+  .cv__int .it p{color:var(--ink-soft);font-size:.9rem}
+  .cv__exp{display:grid;gap:16px}
+  .cv__job{border-left:2px solid var(--line);padding-left:16px;margin-left:4px}
+  .cv__job-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline}
+  .cv__job-title{font-weight:600;font-size:.98rem}
+  .cv__job-period{color:var(--accent);font-weight:600;font-size:.85rem;white-space:nowrap}
+  .cv__job-desc{color:var(--ink-soft);font-size:.9rem;margin-top:5px}
+  .cv__pub{display:grid;gap:12px}
+  .cv__pub .p{display:flex;gap:12px;align-items:baseline}
+  .cv__pub .yr{color:var(--accent);font-weight:700;font-size:.9rem;min-width:42px}
+  .cv__pub .body{flex:1}
+  .cv__pub .t{font-weight:600}
+  .cv__pub .v{color:var(--ink-soft);font-size:.86rem}
+  .cv__pub .badge{display:inline-block;font-size:.68rem;letter-spacing:.4px;text-transform:uppercase;
+    padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+  .badge--journal{background:rgba(91,123,240,.14);color:#3b5bdb}
+  .badge--conference{background:rgba(123,211,255,.16);color:#1c7fb8}
+  .badge--patent{background:rgba(177,91,240,.16);color:#7b3bd0}
+  .cv__pub strong{color:var(--accent)}
+  .cv__aw{display:grid;gap:8px}
+  .cv__aw .a{display:flex;gap:12px}
+  .cv__aw .ay{color:var(--accent);font-weight:600;font-size:.88rem;min-width:96px}
+  .cv__sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .cv__sk .g{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .cv__sk .g h4{font-size:.92rem;color:var(--accent);margin-bottom:6px}
+  .cv__sk .g ul{margin:0;padding-left:18px;font-size:.86rem;color:var(--ink-soft)}
+  @media print{
+    html,body{background:#fff}
+    .cv__bar{display:none}
+    main.cv{box-shadow:none;max-width:none;padding:0}
+    .cv__sec{page-break-inside:avoid}
+  }
+  @media (max-width:600px){
+    main.cv{padding:28px 18px 60px}
+    .cv__name{font-size:1.7rem}
+  }
+</style>
+</head>
+<body>
+  <header class="cv__bar">
+    <a href="index.html">← Back to site</a>
+    <div class="cv__lang" id="cvLang">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="zh">中文</button>
+    </div>
+    <button class="cv__btn cv__btn--ghost" id="cvPrint" type="button">Print / PDF</button>
+    <a class="cv__btn" id="cvDownload" href="cv.pdf" download>Download PDF</a>
+  </header>
+  <main class="cv" id="cv"><p style="color:#999">Loading…</p></main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/cv-render.js"></script>
+</body>
+</html>

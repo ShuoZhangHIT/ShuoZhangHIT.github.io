@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shuo Zhang (Clyde) · Optics Research</title>
+  <meta name="description" content="Personal academic site of an optics researcher at Harbin Institute of Technology — publications (peer-reviewed papers & patents), projects, and a living CV for prospective PhD applications." />
+  <meta name="theme-color" content="#0a0e1a" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- 社交分享卡片（Open Graph / Twitter Card） -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Shuo Zhang (Clyde)" />
+  <meta property="og:title" content="Shuo Zhang (Clyde) · Optics Research" />
+  <meta property="og:description" content="Optics researcher at HIT — precision metrology, adaptive optics, photonics, nonlinear & computational imaging. Prospective PhD candidate." />
+  <meta property="og:image" content="https://shuozhanghit.github.io/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shuo Zhang (Clyde) · Optics Research" />
+  <meta name="twitter:description" content="Optics researcher at HIT — precision metrology, adaptive optics, photonics, nonlinear & computational imaging. Prospective PhD candidate." />
+  <meta name="twitter:image" content="https://shuozhanghit.github.io/assets/og-image.png" />
+
+  <!-- Fonts (graceful fallback if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spectral:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-cosmo="orion">
+
+  <!-- 全站氛围光场：在星空之上、版块之下缓缓漂移的渐变光斑（pointer-events:none，不挡交互） -->
+  <div class="aura" id="aura" aria-hidden="true">
+    <span class="aura__blob aura__blob--1"></span>
+    <span class="aura__blob aura__blob--2"></span>
+    <span class="aura__blob aura__blob--3"></span>
+  </div>
+
+  <!-- 首屏 Loading 动画（棱镜分光 + 光谱环，加载后优雅淡出） -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__stage">
+      <div class="preloader__halo"></div>
+      <div class="preloader__ring"></div>
+      <div class="preloader__core">
+        <svg class="preloader__svg" viewBox="0 0 150 92" width="150" height="92" aria-hidden="true">
+          <defs>
+            <linearGradient id="plBeam" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#eaf2ff" stop-opacity="0"/>
+              <stop offset=".7" stop-color="#eaf2ff" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#ffffff"/>
+            </linearGradient>
+            <linearGradient id="plFan" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ff5d73"/><stop offset=".16" stop-color="#ff9e57"/>
+              <stop offset=".33" stop-color="#ffd166"/><stop offset=".5" stop-color="#7bd389"/>
+              <stop offset=".66" stop-color="#4cc9f0"/><stop offset=".83" stop-color="#5b7bf0"/>
+              <stop offset="1" stop-color="#b15bf0"/>
+            </linearGradient>
+            <filter id="plGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.8"/></filter>
+          </defs>
+          <line class="pl-beam" x1="6" y1="46" x2="60" y2="46" stroke="url(#plBeam)" stroke-width="2.6" stroke-linecap="round"/>
+          <circle class="pl-photon" r="3.2" fill="#fff" filter="url(#plGlow)">
+            <animateMotion dur="1.3s" repeatCount="indefinite" path="M6,46 L60,46"/>
+          </circle>
+          <polygon class="pl-prism" points="60,18 92,74 28,74" fill="rgba(255,255,255,.07)" stroke="rgba(200,225,255,.8)" stroke-width="2"/>
+          <polygon class="pl-fan" points="74,46 140,24 140,68" fill="url(#plFan)" filter="url(#plGlow)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="preloader__brand">
+      <span class="preloader__name">Shuo Zhang</span>
+      <span class="preloader__role">Optics Researcher · HIT</span>
+    </div>
+    <div class="preloader__bar"><i></i></div>
+    <div class="preloader__flash" aria-hidden="true"></div>
+  </div>
+
+  <!-- ============================== 导航栏 ============================== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#hero">
+        <span class="nav__logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <polygon points="16,4 28,28 4,28" fill="none" stroke="url(#g)" stroke-width="2"/>
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff5d73"/>
+                <stop offset=".5" stop-color="#ffd166"/>
+                <stop offset="1" stop-color="#4cc9f0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="nav__name" data-bind="nameShort">Your Name</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <span class="nav__indicator" id="navIndicator" aria-hidden="true"></span>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#news" data-i18n="nav.news">News</a>
+        <a href="#research" data-i18n="nav.research">Research</a>
+        <a href="#publications" data-i18n="nav.publications">Publications</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#awards" data-i18n="nav.awards">Awards</a>
+        <a href="#blog" data-i18n="nav.blog">Blog</a>
+        <a href="cv.html" data-i18n="nav.cv">CV</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="nav__tools">
+        <button class="iconbtn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+          <span class="iconbtn__sun">☀</span>
+          <span class="iconbtn__moon">☾</span>
+        </button>
+        <div class="lang-switch" id="langSwitch">
+          <button class="iconbtn iconbtn--lang" id="langBtn" aria-haspopup="true" aria-expanded="false" title="Language">
+            <span id="langCurrent">EN</span><span class="lang-caret">▾</span>
+          </button>
+          <div class="lang-menu" id="langMenu" role="menu">
+            <button class="lang-opt" data-lang="en" role="menuitem"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+            <button class="lang-opt" data-lang="zh" role="menuitem"><span class="lang-code">中</span><span class="lang-name">中文</span></button>
+            <button class="lang-opt" data-lang="nl" role="menuitem"><span class="lang-code">NL</span><span class="lang-name">Nederlands</span></button>
+            <button class="lang-opt" data-lang="de" role="menuitem"><span class="lang-code">DE</span><span class="lang-name">Deutsch</span></button>
+          </div>
+        </div>
+        <button class="nav__burger" id="burger" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 顶部滚动进度条 -->
+  <div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+
+  <!-- 全站胶片质感：极淡噪点 + 四周暗角（pointer-events:none，不挡交互） -->
+  <div class="film" aria-hidden="true"></div>
+
+  <!-- 鼠标跟随柔光 -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ================================ Hero =============================== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <!-- 粒子星座背景：缓慢漂移 + 邻近连线 + 鼠标轻微排斥（独立于全站星空） -->
+      <canvas class="hero__particles" id="heroParticles"></canvas>
+
+      <!-- 棱镜背后缓慢流动的极光/星云 -->
+      <div class="hero-aurora">
+        <span class="aurora aurora--1"></span>
+        <span class="aurora aurora--2"></span>
+      </div>
+
+      <!-- 漂浮光球 -->
+      <span class="orb orb--1"></span>
+      <span class="orb orb--2"></span>
+      <span class="orb orb--3"></span>
+      <span class="orb orb--4"></span>
+      <span class="orb orb--5"></span>
+      <span class="orb orb--6"></span>
+
+      <!-- 棱镜后旋转光晕 -->
+      <div class="prism-halo"></div>
+
+      <!-- 棱镜分光动画 -->
+      <svg class="prism" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"   stop-color="#ff5d73"/>
+            <stop offset=".17" stop-color="#ff9e57"/>
+            <stop offset=".34" stop-color="#ffd166"/>
+            <stop offset=".5"  stop-color="#7bd389"/>
+            <stop offset=".67" stop-color="#4cc9f0"/>
+            <stop offset=".84" stop-color="#5b7bf0"/>
+            <stop offset="1"   stop-color="#b15bf0"/>
+          </linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0"   stop-color="rgba(255,255,255,.16)"/>
+            <stop offset=".5"  stop-color="rgba(160,200,255,.06)"/>
+            <stop offset="1"   stop-color="rgba(255,255,255,.12)"/>
+          </linearGradient>
+          <radialGradient id="bloom" cx=".5" cy=".5" r=".5">
+            <stop offset="0"  stop-color="rgba(120,160,255,.45)"/>
+            <stop offset=".45" stop-color="rgba(120,160,255,.14)"/>
+            <stop offset="1"  stop-color="rgba(120,160,255,0)"/>
+          </radialGradient>
+          <radialGradient id="apexGlow" cx=".5" cy=".5" r=".5">
+            <stop offset="0"   stop-color="rgba(255,255,255,.95)"/>
+            <stop offset=".4"  stop-color="rgba(180,210,255,.6)"/>
+            <stop offset="1"   stop-color="rgba(180,210,255,0)"/>
+          </radialGradient>
+          <linearGradient id="spectrumFan" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0"    stop-color="#ff5d73"/>
+            <stop offset=".16"  stop-color="#ff9e57"/>
+            <stop offset=".33"  stop-color="#ffd166"/>
+            <stop offset=".5"   stop-color="#7bd389"/>
+            <stop offset=".66"  stop-color="#4cc9f0"/>
+            <stop offset=".83"  stop-color="#5b7bf0"/>
+            <stop offset="1"    stop-color="#b15bf0"/>
+          </linearGradient>
+          <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.4"/>
+          </filter>
+          <filter id="glow" x="-120%" y="-120%" width="340%" height="340%">
+            <feGaussianBlur stdDeviation="4"/>
+          </filter>
+        </defs>
+
+        <!-- 棱镜后光晕（呼吸） -->
+        <ellipse class="bloom" cx="430" cy="205" rx="320" ry="190" fill="url(#bloom)">
+          <animate attributeName="opacity" values=".75;1;.75" dur="6s" repeatCount="indefinite"/>
+        </ellipse>
+
+        <!-- 出射光谱扩散扇形（彩虹柔光，营造“扩散”感） -->
+        <polygon class="rays-fan" points="452,200 788,92 788,308" fill="url(#spectrumFan)" filter="url(#glow)">
+          <animate attributeName="opacity" values=".5;.9;.5" dur="5.5s" repeatCount="indefinite"/>
+        </polygon>
+        <polygon class="rays-fan rays-fan--core" points="452,200 788,148 788,252" fill="url(#spectrumFan)" filter="url(#glow)">
+          <animate attributeName="opacity" values=".7;1;.7" dur="4.8s" repeatCount="indefinite"/>
+        </polygon>
+
+        <!-- 入射白光 + 拖尾光点（打到棱镜左面 x=348） -->
+        <g class="beam-in-group" filter="url(#soft)">
+          <line class="beam-in" x1="18" y1="200" x2="348" y2="200" stroke="#eaf2ff" stroke-width="3.5"/>
+        </g>
+        <g class="photon-g" filter="url(#glow)">
+          <polygon class="trail" points="0,0 -42,3.4 -42,-3.4" fill="#ffffff"/>
+          <circle r="4.6" fill="#ffffff"/>
+          <animateMotion dur="2.1s" repeatCount="indefinite" rotate="0" path="M18,200 L348,200"/>
+        </g>
+
+        <!-- 玻璃棱镜 -->
+        <polygon class="prism__body" points="400,92 500,300 300,300"
+                 fill="url(#glass)" stroke="rgba(200,225,255,.55)" stroke-width="2"/>
+        <polygon class="prism__face" points="400,92 500,300 300,300" fill="none"
+                 stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+
+        <!-- 出射点高亮（衍射分光处的强光斑） -->
+        <circle class="apex-bloom" cx="452" cy="200" r="14" fill="url(#apexGlow)">
+          <animate attributeName="r" values="11;18;11" dur="3.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".85;1;.85" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- 扇形里极淡的游走光点 -->
+        <g class="fan-sparkles" filter="url(#soft)">
+          <circle class="fan-spark" cx="560" cy="176" r="1.9" fill="#ffd9d9">
+            <animateTransform attributeName="transform" type="translate" values="0,0; 5,-4; -3,4; 0,0" dur="9s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".12;.34;.12" dur="6.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="600" cy="216" r="1.7" fill="#ffe6c9">
+            <animateTransform attributeName="transform" type="translate" values="0,0; -4,5; 4,-3; 0,0" dur="11s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".1;.3;.1" dur="7.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="588" cy="236" r="2" fill="#fff3c9">
+            <animateTransform attributeName="transform" type="translate" values="0,0; 6,3; -5,-4; 0,0" dur="10s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".14;.36;.14" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="642" cy="166" r="1.8" fill="#d9f5dd">
+            <animateTransform attributeName="transform" type="translate" values="0,0; -5,-4; 4,5; 0,0" dur="12s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".1;.32;.1" dur="6.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="664" cy="226" r="1.9" fill="#c9ecf7">
+            <animateTransform attributeName="transform" type="translate" values="0,0; 5,4; -4,-5; 0,0" dur="9.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".13;.35;.13" dur="7.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="706" cy="192" r="1.7" fill="#d3dbff">
+            <animateTransform attributeName="transform" type="translate" values="0,0; -4,4; 5,-3; 0,0" dur="13s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".1;.3;.1" dur="8.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="724" cy="244" r="2" fill="#ecd3ff">
+            <animateTransform attributeName="transform" type="translate" values="0,0; 4,-5; -5,3; 0,0" dur="11.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".12;.34;.12" dur="6.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fan-spark" cx="680" cy="150" r="1.6" fill="#eaf2ff">
+            <animateTransform attributeName="transform" type="translate" values="0,0; -5,3; 4,-4; 0,0" dur="10.5s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.33;.66;1" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/>
+            <animate attributeName="opacity" values=".1;.28;.1" dur="7.8s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+      </svg>
+
+      <!-- 闪烁星点 -->
+      <span class="sparkle sparkle--1"></span>
+      <span class="sparkle sparkle--2"></span>
+      <span class="sparkle sparkle--3"></span>
+      <span class="sparkle sparkle--4"></span>
+      <span class="sparkle sparkle--5"></span>
+      <span class="sparkle sparkle--6"></span>
+
+      <!-- 太空元素：行星 / 星芒 / 流星 -->
+      <span class="cosmo-planet cosmo-planet--l" aria-hidden="true"><i class="cosmo-planet__ring"></i></span>
+      <span class="cosmo-planet cosmo-planet--r" aria-hidden="true"><i class="cosmo-planet__ring"></i></span>
+      <span class="cosmo-star cosmo-star--l" aria-hidden="true"></span>
+      <span class="cosmo-star cosmo-star--r" aria-hidden="true"></span>
+      <span class="cosmo-shoot" aria-hidden="true"></span>
+
+      <!-- 两侧漂浮小棱镜碎片 -->
+      <span class="hero-shard hero-shard--l" aria-hidden="true"></span>
+      <span class="hero-shard hero-shard--r" aria-hidden="true"></span>
+
+      <div class="hero__grid"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__greeting" data-i18n="hero.greeting">Hi, I'm</p>
+      <h1 class="hero__name">
+        <span data-bind="name">Shuo Zhang</span><span class="hero__alias" data-bind="alias"></span>
+      </h1>
+
+      <p class="hero__type" aria-hidden="true">
+        <span class="hero__type-label" data-i18n="hero.typeLabel">I explore</span>
+        <span class="hero__type-word"><span id="typeText"></span><span class="hero__caret"></span></span>
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary" id="cvBtn" href="#" data-i18n="hero.cta.cv">Download CV</a>
+        <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta.contact">Get in touch</a>
+      </div>
+
+      <div class="hero__badges" id="heroBadges" aria-label="Academic profiles"></div>
+
+      <div class="hero__stats" id="heroStats" aria-label="Highlights"></div>
+    </div>
+
+    <a class="hero__scroll" href="#about" aria-label="Scroll to explore">
+      <span class="hero__scroll-arrow" aria-hidden="true"></span>
+      <span class="hero__scroll-label" data-i18n="hero.scroll">Scroll to explore</span>
+    </a>
+  </section>
+
+  <!-- ================================ 关于 =============================== -->
+  <section class="section" id="about">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="about.title">About</h2>
+      <p class="section__rule"></p>
+    </div>
+    <div class="about">
+      <!-- 头像占位：想放真实照片时，把下面整块替换为 <img class="about__avatar" src="assets/photo.jpg" alt="Shuo Zhang"> 即可 -->
+      <div class="about__avatar" aria-hidden="true">
+        <span class="about__avatar-ring"></span>
+        <svg class="about__avatar-mark" viewBox="0 0 64 64" width="58" height="58">
+          <polygon points="32,9 57,55 7,55" fill="none" stroke="url(#ag)" stroke-width="3"/>
+          <line x1="6" y1="40" x2="32" y2="40" stroke="#eaf2ff" stroke-width="3" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff5d73"/><stop offset=".5" stop-color="#ffd166"/><stop offset="1" stop-color="#4cc9f0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="about__text" id="aboutText"></div>
+      <aside class="about__side">
+        <h3 class="about__side-title" data-i18n="about.timeline">Timeline</h3>
+        <ul class="timeline" id="timeline"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- =============================== 动态（横向时间线）=============================== -->
+  <section class="section" id="news">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="news.title">News &amp; Updates</h2>
+      <p class="section__sub" data-i18n="news.subtitle">Recent milestones, papers, and talks.</p>
+    </div>
+    <div class="news-horiz" id="newsList"></div>
+  </section>
+
+  <!-- =============================== 研究 =============================== -->
+  <section class="section section--alt" id="research">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="research.title">Research Interests</h2>
+      <p class="section__sub" data-i18n="research.subtitle">Where light meets information.</p>
+    </div>
+    <p class="research__statement" data-bind="researchStatement"></p>
+    <div class="interests" id="interests"></div>
+  </section>
+
+  <!-- =============================== 光学互动实验室 =============================== -->
+  <section class="section section--alt" id="optics-lab">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="lab.title">Interactive Optics</h2>
+      <p class="section__sub" data-i18n="lab.subtitle">Play with light — tune the numbers and watch the physics unfold.</p>
+    </div>
+    <div class="lab">
+      <div class="lab__tabs" id="labTabs" role="tablist">
+        <button class="lab__tab is-active" data-lab="prism" data-i18n="lab.prism" role="tab" aria-selected="true">Prism Dispersion</button>
+        <button class="lab__tab" data-lab="slit" data-i18n="lab.slit" role="tab" aria-selected="false">Double-Slit</button>
+        <button class="lab__tab" data-lab="refract" data-i18n="lab.refract" role="tab" aria-selected="false">Refraction</button>
+      </div>
+      <div class="lab__stage">
+        <canvas class="lab__canvas" id="labCanvas"></canvas>
+      </div>
+      <div class="lab__controls" id="labControls"></div>
+      <p class="lab__note" id="labNote"></p>
+    </div>
+  </section>
+
+  <!-- =============================== 论文 =============================== -->
+  <section class="section" id="publications">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="pub.title">Publications</h2>
+      <p class="section__sub" data-i18n="pub.subtitle">Peer-reviewed papers and preprints.</p>
+    </div>
+    <div class="pub-tools">
+      <div class="filters" id="pubFilters">
+        <button class="chip is-active" data-filter="all" data-i18n="pub.all">All</button>
+        <button class="chip" data-filter="journal" data-i18n="pub.journal">Journal</button>
+        <button class="chip" data-filter="conference" data-i18n="pub.conference">Conference</button>
+        <button class="chip" data-filter="patent" data-i18n="pub.patent">Patent</button>
+      </div>
+      <div class="pub-tools__row">
+        <div class="filters filters--years" id="pubYears"></div>
+        <input type="search" id="pubSearch" class="pub-search" autocomplete="off" data-i18n-placeholder="pub.search" aria-label="Search publications" />
+      </div>
+    </div>
+    <div class="pub-meta-row">
+      <div class="pub-stats" id="pubStats" aria-live="polite"></div>
+      <a class="pub-scholar" id="pubScholar" href="#" target="_blank" rel="noopener" hidden>
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3.2a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6Zm0 13.2c-2.3 0-4.3-1.2-5.3-3 .1-1.9 3.6-2.9 5.3-2.9s5.2 1 5.3 2.9a6.2 6.2 0 0 1-5.3 3Z"/></svg>
+        <span data-i18n="pub.scholar">Google Scholar</span>
+      </a>
+    </div>
+    <div class="pub-count" id="pubCount" aria-live="polite"></div>
+    <ol class="publist" id="pubList"></ol>
+    <p class="pub-empty" id="pubEmpty" hidden></p>
+  </section>
+
+  <!-- =============================== 项目 =============================== -->
+  <section class="section" id="projects">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="project.title">Projects</h2>
+      <p class="section__sub" data-i18n="project.subtitle">Selected research &amp; engineering work.</p>
+    </div>
+    <p class="research__hint" data-i18n="project.hint">Tap any area to open the projects I've worked on.</p>
+    <div class="interests" id="projectList"></div>
+  </section>
+
+  <!-- =============================== 荣誉奖项 =============================== -->
+  <section class="section" id="awards">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="awards.title">Honors &amp; Awards</h2>
+      <p class="section__sub" data-i18n="awards.subtitle">Scholarships and competition prizes.</p>
+    </div>
+    <div class="award-stats" id="awardStats"></div>
+    <div class="honors" id="honorList"></div>
+  </section>
+
+  <!-- =============================== 博客 =============================== -->
+  <section class="section section--alt" id="blog">
+    <header class="section__head blog-head">
+      <div class="blog-head__text">
+        <h2 class="section__title" data-i18n="blog.title">Blog</h2>
+        <p class="section__sub" data-i18n="blog.subtitle">Notes on optics, research, and grad-school life.</p>
+      </div>
+      <div class="blog-search">
+        <input type="search" id="postSearch" autocomplete="off" aria-label="Search blog" />
+      </div>
+    </header>
+    <div class="filters" id="postFilters"></div>
+    <div class="posts" id="postList"></div>
+    <nav class="post-nav" id="postNav" aria-label="Blog pagination"></nav>
+  </section>
+
+  <!-- =============================== 联系 =============================== -->
+  <section class="section" id="contact">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="contact.title">Get in Touch</h2>
+      <p class="section__sub" data-i18n="contact.subtitle">Open to research collaboration and PhD opportunities.</p>
+    </div>
+    <div class="contact">
+      <div class="contact__email">
+        <span class="contact__label" data-i18n="contact.email">Email</span>
+        <span class="contact__addr" id="contactEmail">clydeterese09@gmail.com</span>
+        <button class="btn btn--ghost btn--sm" id="copyEmail" data-i18n="contact.copy">Copy</button>
+        <span class="contact__addr contact__addr--alt" id="contactEmailAlt"></span>
+      </div>
+      <div class="contact__social" id="socialLinks"></div>
+
+      <form class="cform" id="contactForm" novalidate>
+        <div class="cform__row">
+          <input class="cform__input" name="name" type="text" required placeholder="Your name" autocomplete="name" />
+          <input class="cform__input" name="email" type="email" required placeholder="Your email" autocomplete="email" />
+        </div>
+        <textarea class="cform__input" name="message" required placeholder="Your message…" rows="4"></textarea>
+        <div class="cform__foot">
+          <button class="btn btn--primary" type="submit" id="contactSubmit" data-i18n="contact.send">Send message</button>
+          <span class="cform__note" id="formNote"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- =============================== 页脚 =============================== -->
+  <footer class="footer">
+    <p class="footer__built" data-i18n="footer.built">Built with light &amp; code.</p>
+    <p class="footer__rights">© <span id="year"></span> <span data-bind="name">Your Name</span>. <span data-i18n="footer.rights">All rights reserved.</span></p>
+  </footer>
+
+  <button class="totop" id="toTop" aria-label="Back to top">
+    <svg class="totop__ring" viewBox="0 0 44 44" aria-hidden="true">
+      <defs>
+        <linearGradient id="totopGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4cc9f0"/>
+          <stop offset="1" stop-color="#b15bf0"/>
+        </linearGradient>
+      </defs>
+      <circle class="totop__track" cx="22" cy="22" r="19"/>
+      <circle class="totop__bar" cx="22" cy="22" r="19" stroke="url(#totopGrad)"/>
+    </svg>
+    <span class="totop__arrow">↑</span>
+  </button>
+
+  <!-- ===================== 研究兴趣详情弹窗 ===================== -->
+  <div class="modal" id="fieldModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="fieldModalTitle">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="modal__bar"></div>
+      <div class="modal__content" id="fieldModalContent"></div>
+    </div>
+  </div>
+
+  <!-- ===================== 项目详情弹窗 ===================== -->
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="modal__bar"></div>
+      <div class="modal__content" id="projectModalContent"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/optics-lab.js"></script>
+  <script src="assets/js/cosmic-bg.js"></script>
+</body>
+</html>
