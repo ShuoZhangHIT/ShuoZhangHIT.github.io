@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why is the sky blue? From Rayleigh scattering to metasurfaces · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="orion">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Why is the sky blue? From Rayleigh scattering to metasurfaces</h1>
+    <div class="rule"></div>
+    <div class="meta">March 12, 2026 · Optics, explained simply</div>
+
+    <p>"Why is the sky blue?" is probably the first physics question most of us ever asked. The
+    textbook answer — "Rayleigh scattering" — is correct, but it hides a beautiful idea that, years
+    later, connects directly to the metasurfaces I now study in the lab. Let's walk from the
+    playground question to the research bench.</p>
+
+    <h2>The short answer: small things scatter short waves</h2>
+    <p>Sunlight is white, meaning it contains every visible color. As it passes through the
+    atmosphere, it encounters molecules (N₂, O₂) far <em>smaller</em> than the wavelength of
+    visible light. Lord Rayleigh showed that the scattering strength of such tiny particles scales
+    roughly as <code>1 / λ⁴</code> — the inverse fourth power of wavelength.</p>
+
+    <p>Blue light has a wavelength about 60% that of red light, so it gets scattered roughly
+    <code>(1/0.6)⁴ ≈ 7–8×</code> more strongly. Blue is therefore thrown in every direction across
+    the sky, while red travels through relatively straight. Looking up, you see the scattered blue;
+    looking at the sun, you see what's left — which at sunset, through a long, dense path of air,
+    has had most of its blue removed, leaving red and orange.</p>
+
+    <blockquote>The same sun, the same air — only the path length and the wavelength decide the color.</blockquote>
+
+    <h2>The twist: what if we designed the scatterer?</h2>
+    <p>Here is where it gets interesting for an optics researcher. In the sky, the "scatterers" are
+    accidental — random molecules doing physics whether we like it or not. But nature also makes
+    color <em>on purpose</em>: the iridescent blue of a Morpho butterfly wing is not pigment at all.
+    It is structure — nanoscale ridges that interfere with light. We call this
+    <strong>structural color</strong>, and it is exactly the territory of metasurfaces.</p>
+
+    <p>A metasurface is a flat array of sub-wavelength building blocks ("meta-atoms") whose shape,
+    size, and arrangement we engineer down to a few tens of nanometers. Instead of hoping molecules
+    scatter the right way, we <em>prescribe</em> it: which wavelength bends, which reflects, which
+    focuses. The same wave physics that paints the noon sky becomes a design knob.</p>
+
+    <h2>Two ends of one idea</h2>
+    <p>So the question "why is the sky blue?" and the question "can we build a flat lens that paints
+    its own color?" are really the same question asked twice — once about what nature happened to
+    give us, and once about what we choose to make.</p>
+
+    <p>That, to me, is the appeal of micro/nano optics: it turns explanation into invention. We
+    understand the scattering, then we redesign the scatterer. The sky was the first textbook; the
+    metasurface is the sequel we get to write.</p>
+
+    <p><em>If you found this useful, the next post covers a more mundane but essential skill —
+    how to actually read a dense optics paper without drowning in its equations.</em></p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

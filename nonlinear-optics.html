@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>When light talks to itself: a student's tour of nonlinear optics · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-orange);background:rgba(255,158,87,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-orange);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="carina">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>When light talks to itself: a student's tour of nonlinear optics</h1>
+    <div class="rule"></div>
+    <div class="meta">July 28, 2026 · Nonlinear Optics</div>
+
+    <p>In most optics we teach, light is polite: it passes through a material, picks up a phase, and leaves unchanged. The material doesn't care how bright the beam is. <strong>Nonlinear optics</strong> begins exactly where that approximation breaks — at high intensity, the medium's response depends on the light field itself, and suddenly light starts interacting with light. That single shift in assumption opens an entire zoo of phenomena, and it is where three of my manuscripts in preparation live.</p>
+
+    <h2>Solitons: light holding its own shape</h2>
+    <p>A <strong>temporal soliton</strong> is a pulse that doesn't spread. Normally dispersion stretches a pulse as it travels, the way a pebble's wake widens. But in a nonlinear medium, the intensity-dependent refractive index squeezes the pulse at exactly the rate dispersion wants to stretch it, and the two cancel. The pulse sails on, self-stabilizing. One of my papers looks at how <em>distributed-order dispersion</em> — dispersion that isn't a simple fixed number — can be used to control the soliton's internal modes without distorting its endpoints. It's a control problem dressed up as a wave problem.</p>
+
+    <blockquote>Linear optics lets light travel. Nonlinear optics lets light remember it was there.</blockquote>
+
+    <h2>Frequency conversion and quasi-phase-matching</h2>
+    <p>The other headline of nonlinear optics is <strong>mixing frequencies</strong>: combine two colors and, in the right crystal, get a third. The catch is phase-matching — the generated wave has to stay in step with the driving one, or the contribution averages to zero. <strong>Quasi-phase-matching</strong>, with periodic poling, engineers that step deliberately. My second paper takes a <em>fabrication-aware</em> view: real gratings aren't ideal, so what are the true performance bounds of binary quasi-phase-matching designs for multiplexed sum-frequency generation, and how should we design them knowing the factory's limits?</p>
+
+    <h2>Kerr, Talbot, and where I'm headed</h2>
+    <p>The third paper sits at the intersection of self-action and interference: how the <strong>Kerr effect</strong> renormalizes the Talbot recurrence length in periodic optical fields. Talbot imaging — free-space self-imaging of a grating — is a quiet workhorse in metrology and imaging, and seeing how nonlinearity reshapes its length scale is a neat window into how "linear intuition" quietly fails.</p>
+
+    <p>Why do I like this corner? Because nonlinear optics is where light stops being a passive signal and becomes an active medium — and because it's increasingly <em>on-chip</em>, the same miniaturization story as metasurfaces and computational imaging. Collecting the papers and notes in one place lives on the <a href="index.html#research" style="color:var(--s-orange)">Research</a> page.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The afternoon my laser turned blue · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="galaxy">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>The afternoon my laser turned blue</h1>
+    <div class="rule"></div>
+    <div class="meta">September 21, 2025 · Nonlinear Optics</div>
+
+    <p>I had read the formula for second-harmonic generation a dozen times: two photons at frequency ω go in, one photon at 2ω comes out. It sounded like bookkeeping. Then I aligned a green pump into a crystal, squinted through the safety goggles, and watched a faint blue bloom appear at the far end where, a second earlier, there had been nothing but invisible infrared. The color literally was not in the input. The crystal invented it.</p>
+
+    <p>That blue dot is the moment nonlinear optics stopped being algebra and became magic I could hold in a beam.</p>
+
+    <h2>Why "nonlinear" is the whole point</h2>
+    <p>In linear optics, light passes through a material and the output is the same frequency, just delayed or bent. In a nonlinear medium, the light and the material talk back to each other — the polarization responds not just to the field but to the field <em>squared</em> and higher. That coupling is what lets two infrared photons conspire into one blue one, or let a pulse reshape itself into a soliton that travels unchanged for kilometers.</p>
+
+    <blockquote>Linear optics is light obeying the room. Nonlinear optics is light remodeling the room as it walks through.</blockquote>
+
+    <p>The catch, and the craft, is <strong>phase-matching</strong>. The generated blue has to stay in step with the driving green as both propagate, or the contributions cancel instead of add. Quasi-phase-matching — flipping the crystal's nonlinearity periodically so the walk-off is corrected — is the trick I've been designing gratings around, and it's where three of my manuscripts-in-preparation live.</p>
+
+    <h2>Small miracle, big toolbox</h2>
+    <p>Frequency conversion is only the headline. The same nonlinearity gives us solitons, supercontinuum, and the Kerr effect behind microresonator combs. It's a whole language for making light do things its source never contained. I keep a running note of these ideas in the <a href="index.html#research" style="color:var(--s-cyan)">Research</a> section, alongside the soliton and quasi-phase-matching work.</p>
+
+    <p>But honestly? I still smile at that blue dot. Some equations deserve to be seen.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

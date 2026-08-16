@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seeing the invisible: how we measure a nanometer and a microradian · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="cygnus">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Seeing the invisible: how we measure a nanometer and a microradian</h1>
+    <div class="rule"></div>
+    <div class="meta">July 28, 2026 · Ultra-precision Measurement</div>
+
+    <p>Most measurements we meet in daily life are generous: weigh yourself, and ±100 g doesn't matter; check the room, and a centimeter is nobody's business. Precision metrology lives at the other end of the spectrum, where the questions are "how far did that mirror move?" down to a fraction of a nanometer, and "by what angle did the beam tilt?" down to a microradian — about the width of a human hair seen from ten meters away.</p>
+
+    <p>This is the world I work in, and what first pulled me into optics. It is also, I think, the quiet foundation under almost every other glamorous thing we do with light.</p>
+
+    <h2>Two workhorses: the autocollimator and the interferometer</h2>
+    <p>An <strong>autocollimator</strong> measures tiny angles. A collimated beam leaves the instrument, reflects off a target mirror, and returns; any tilt of that mirror doubles into a shift of the returning spot, which we read optically. It is conceptually simple and astonishingly sensitive — microradian angles become easy. An <strong>interferometer</strong> measures displacement instead, by counting the light-and-dark fringes that appear when two beams recombine; each fringe corresponds to half a wavelength of motion, so a stabilized laser turns distance into a fringe count.</p>
+
+    <p>Together they let us watch things move that we literally cannot see move.</p>
+
+    <h2>The real enemy: systematic error</h2>
+    <p>Here is the part that hooked me more than the pretty sensitivity numbers. A measurement is only as true as its <em>systematic</em> errors allow. In an autocollimator, for example, tiny imperfections in the collimator objective — astigmatism,coma, a slightly off-axis beam — bend the returning ray in ways that masquerade as angle. My first-author paper in <i>Sensors</i> (MDPI) was exactly this: I modeled how lens systematic errors couple into the angle reading, both theoretically and experimentally, and showed how to predict and compensate them.</p>
+
+    <blockquote>Resolution tells you how finely you can read a number. Systematic error tells you how wrong that number might quietly be. The second one is the harder fight.</blockquote>
+
+    <p>That distinction — between <em>seeing</em> a small change and <em>knowing</em> its true value — is the heart of this field. A stray reflection, a thermal drift, an assembly misalignment: each one is a small liar, and metrology is the art of catching the liars.</p>
+
+    <h2>Why it matters beyond the lab bench</h2>
+    <p>Ultra-precision measurement is the substrate beneath semiconductor lithography, gravitational-wave detectors, telescope pointing, and precision manufacturing. The reason a chip can be printed at nanometer scale is, in large part, that someone, somewhere, could measure at that scale first. My patent (a single-beam three-degree-of-freedom method combining heterodyne interferometry and autocollimation) is a small attempt to push that envelope — measuring displacement <em>and</em> two angles from one beam.</p>
+
+    <p>If you want the full picture of what I've done here, the <a href="index.html#research" style="color:var(--s-cyan)">Research</a> section of my site collects the papers, the patent, and these notes in one place. I'll keep adding as the work grows.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How I read my first dense optics paper without drowning in equations · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  ol{color:#cdd6ef;margin:0 0 18px 22px;font-size:1.05rem}
+  li{margin-bottom:14px}
+  li b{color:#fff}
+  blockquote{border-left:4px solid var(--s-violet);background:rgba(177,91,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="nebula">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>How I read my first dense optics paper without drowning in equations</h1>
+    <div class="rule"></div>
+    <div class="meta">November 2, 2025 · Research workflow</div>
+
+    <p>I still remember the first "real" optics paper I opened: twelve pages, integrals on every
+    other line, and a figure caption longer than some of my essays. My instinct was to read it
+    top-to-bottom like a novel — and I understood nothing. Over time I built a workflow that lets
+    me get the <em>physics</em> out of a hard paper without solving every equation. Here it is.</p>
+
+    <h2>The workflow</h2>
+    <ol>
+      <li><b>Read the frame first.</b> Title, abstract, and the final "conclusion / outlook"
+      section tell you the <em>why</em> and the <em>what</em>. Ignore the math entirely on pass
+      one. If you can't state the paper's claim in one sentence, stop — you're not ready for the
+      body yet.</li>
+
+      <li><b>Study the figures before the formulas.</b> Figures are the paper's true spine. A good
+      plot or schematic already encodes the result; the equations are just the proof. I literally
+      cover the math with my hand and ask: "What story do these pictures tell?"</li>
+
+      <li><b>Skim equations for structure, not derivation.</b> I don't read a long derivation on
+      the first pass. I look for the <em>inputs and outputs</em>: what goes in, what comes out, and
+      which symbol is "the answer." That map is enough to follow the argument.</li>
+
+      <li><b>Write the physical story in my own words.</b> Before moving on, I close the PDF and
+      explain the idea aloud as if teaching a friend. If I stammer, I know exactly which paragraph
+      to revisit. This step is where intuition actually forms.</li>
+
+      <li><b>Go deep only where you need to.</b> Now — and only now — do I dig into the math I
+      specifically care about (usually one result I want to reproduce or build on). The rest I
+      leave as "trusted but unread."</li>
+
+      <li><b>Try to reproduce one number or plot.</b> Nothing checks understanding like re-deriving
+      a single curve in Python or MATLAB. Even a rough match tells you the model is real and not
+      just impressive prose.</li>
+    </ol>
+
+    <blockquote>Equations are annotations to intuition, not the point of the paper. Read for the
+    picture; let the math be the footnote.</blockquote>
+
+    <h2>The mindset that helped most</h2>
+    <p>The biggest shift was emotional, not technical: I stopped feeling guilty for <em>not</em>
+    reading every line. A paper is a gift from someone who already did the hard part; my job is to
+    extract the idea I need, not to audit the whole thing. Senior researchers do exactly this — they
+    are just faster at it because the patterns are familiar.</p>
+
+    <p>If you're an undergrad opening your first dense paper: be patient with the stammering. The
+    goal isn't to solve it in an afternoon; it's to leave with one clear physical picture you didn't
+    have before. That, compounded over a year, is how you learn to read like a researcher.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

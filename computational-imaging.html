@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Letting the algorithm see: computation as the new lens · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-blue);background:rgba(91,123,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-blue);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body>
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Letting the algorithm see: computation as the new lens</h1>
+    <div class="rule"></div>
+    <div class="meta">July 28, 2026 · Computational Imaging</div>
+
+    <p>For over a century the recipe for a picture was fixed: light enters a lens, the lens forms an image, a sensor records it. Computational imaging asks a subversive question — what if we let the lens be <em>imperfect on purpose</em>, capture something messier, and let an algorithm reconstruct the picture we actually wanted? Suddenly the boundary between optics and software dissolves, and "resolution" becomes something you can recover rather than only something you can buy with bigger glass.</p>
+
+    <h2>Breaking the diffraction limit</h2>
+    <p>The diffraction limit says a lens can't resolve features smaller than about half a wavelength. <strong>Super-resolution</strong> microscopy — STED, SIM, PALM/STORM — gets around this by coding the acquisition (special illumination, controlled photo-switching) so that the <em>computation</em> afterward can separate what the optics alone couldn't. The physics hasn't changed; the measurement strategy has. That's the whole spirit of the field: move the cleverness out of the glass and into the math.</p>
+
+    <blockquote>An ordinary lens captures light. A computational system captures information — and information can be reconstructed even when the image can't.</blockquote>
+
+    <h2>Bioimaging and inverse problems</h2>
+    <p>In <strong>bioimaging</strong>, this matters enormously: living tissue scatters and blurs, and you can't just add a bigger objective. Computational methods treat imaging as an <strong>inverse problem</strong> — given the blurry, noisy measurement and a model of how light traveled, recover the underlying object. My interest here is the bridge: I come from precision metrology (knowing errors precisely) and nonlinear optics (new on-chip light sources), and computational imaging is where those tools become useful for actual life-science questions — seeing structures cells hide from conventional microscopes.</p>
+
+    <h2>Why it's my connector</h2>
+    <p>If metasurfaces are the reimagined hardware and nonlinear optics is the reimagined light source, computational imaging is the reimagined <em>output</em> — the step that turns a clever optical system into a picture a biologist can use. It's the direction that most explicitly ties my other work together, which is exactly why I listed it as a core research interest rather than a side note.</p>
+
+    <p>I'm still building this thread, but the papers, notes, and related directions are gathered on the <a href="index.html#research" style="color:var(--s-blue)">Research</a> page as they develop.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

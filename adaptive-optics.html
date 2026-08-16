@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sharpening the blurred universe: a first look at adaptive optics · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-green);background:rgba(123,211,137,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-green);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="andromeda">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Sharpening the blurred universe: a first look at adaptive optics</h1>
+    <div class="rule"></div>
+    <div class="meta">July 28, 2026 · Adaptive Optics</div>
+
+    <p>Look at a star through a telescope and, on a still night, it should be a pinpoint. Instead it twinkles — not because the star changes, but because the atmosphere between it and your eye is a constantly shifting lens of uneven temperature and density. The same problem haunts laser beams, microscopy, and free-space communication. <strong>Adaptive optics (AO)</strong> is the set of tools we use to measure that distortion and cancel it, in real time, before it ever reaches the detector.</p>
+
+    <h2>The loop: sense, compute, correct</h2>
+    <p>Every AO system is a feedback loop with three players. A <strong>wavefront sensor</strong> measures how the incoming wavefront has been warped — often with a Shack–Hartmann array that turns local tilt into spot shifts. A controller then decides what correction to apply, and a <strong>deformable mirror</strong> — a surface made of tiny actuators — physically bends to undo the distortion. Close the loop fast enough and the atmosphere effectively disappears; the star becomes the crisp point it always was.</p>
+
+    <blockquote>Adaptive optics doesn't make light travel straighter. It listens to how the light was bent, then bends a mirror to bend it back.</blockquote>
+
+    <h2>Where it shows up</h2>
+    <p>The headline application is astronomy: modern giant telescopes are blind without AO, because without it their resolution is capped by the atmosphere, not by their enormous mirrors. But the same idea spreads. In <strong>bioimaging</strong>, AO corrects the aberrations of tissue so we can see deeper into living samples. In <strong>laser systems</strong>, it stabilizes beams against thermal and mechanical drift. Even retinal imaging — photographing individual cells in a living human eye — relies on it.</p>
+
+    <h2>Why I'm drawn to it</h2>
+    <p>For me, AO sits at a satisfying intersection: it is deeply physical (wave optics, control theory) yet intensely practical (something visibly sharper comes out the other end). As someone who also works in precision metrology, I like that AO and measurement are two sides of the same coin — one reads a wavefront's error, the other reads a displacement's error, and both are really about <em>knowing the distortion well enough to beat it</em>.</p>
+
+    <p>I'm still early in this direction — my current work leans more on metrology and nonlinear optics — but AO is where I expect to spend more time as I move toward systems that have to perform <em>in the wild</em>, not just on an optical table. If you're curious how this connects to the rest of my work, the <a href="index.html#research" style="color:var(--s-green)">Research</a> page gathers it all.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

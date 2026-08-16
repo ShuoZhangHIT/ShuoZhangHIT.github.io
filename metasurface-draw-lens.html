@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Drawing a lens with math · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="nebula">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Drawing a lens with math</h1>
+    <div class="rule"></div>
+    <div class="meta">May 9, 2025 · Metasurfaces &amp; Micro/Nano Optics</div>
+
+    <p>For most of my optics education, a lens was something you <em>chose</em>: you picked a curvature, a glass, a coating, from a catalog of things other people had figured out how to make. A metalens breaks that habit completely. There is no catalog. You decide, pixel by pixel, what phase each tiny pillar imparts to the light — and then you ask an optimizer to find the arrangement that bends the world the way you want.</p>
+
+    <p>My first inverse-design run felt less like engineering and more like collaborating with a stranger who sees in a language I don't.</p>
+
+    <h2>Meta-atoms are the alphabet</h2>
+    <p>The building block of a metasurface is a <strong>meta-atom</strong>: a subwavelength pillar of dielectric, whose height and radius set how much optical phase it delays. String enough of them together on a grid and, locally, they act like a continuous gradient-index surface. Tune that gradient and you get focusing, beam-steering, even achromatic behavior — all from a flat slab a few hundred nanometers thick.</p>
+
+    <blockquote>The old question was "what lens can I buy?" The metasurface question is "what lens can I describe?" Description, it turns out, is design.</blockquote>
+
+    <p>Inverse design flips the workflow. Instead of deriving a shape analytically, you state a target — focus here, at this bandwidth — and let a gradient-based optimizer, guided by electromagnetic simulation, push millions of little pillars toward it. My intuition picked the starting guess. The optimizer did the rest, and half the time I couldn't have drawn its solution by hand.</p>
+
+    <h2>Why this corner hooked me</h2>
+    <p>Micro and nano optics sits exactly where my two loves overlap: the crisp physics of wave propagation and the messy creativity of computation. A metalens is a poem written in Maxwell's equations and solved by a laptop. That combination — rigorous and open-ended at once — is why I keep coming back to it.</p>
+
+    <p>The <a href="index.html#research" style="color:var(--s-cyan)">Research</a> section has the inverse-design notebook and the unit-cell phase library where I'm still teaching myself this craft, one simulation at a time.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

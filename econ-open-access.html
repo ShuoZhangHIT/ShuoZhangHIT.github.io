@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The hidden market behind every PDF I download · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="orion">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>The hidden market behind every PDF I download</h1>
+    <div class="rule"></div>
+    <div class="meta">December 14, 2025 · Economics of Knowledge</div>
+
+    <p>I've downloaded hundreds of papers over the past two years. Most through university subscriptions, some through Sci-Hub, a few directly from authors' websites. Each download feels free. It isn't. Behind every PDF there's a market — publishers charging libraries thousands per journal, authors paying APCs to make their work open-access, readers locked out when their institution can't afford the subscription.</p>
+
+    <p>This note is my attempt to map that invisible market, as someone who lives inside it every day.</p>
+
+    <h2>Who pays?</h2>
+    <p>In traditional publishing: libraries pay subscriptions, universities pay libraries, tuition and grants pay universities, taxpayers and students pay ultimately. In open-access: authors (or their grants) pay article processing charges that can run $2,000–$11,000 per paper. Either way, money changes hands. The only question is whose hand it leaves.</p>
+
+    <blockquote>The current system optimizes for publisher revenue, not for the speed or breadth of knowledge dissemination. Those two goals have diverged sharply.</blockquote>
+
+    <h2>What it means for a student researcher</h2>
+    <p>Practically, it means my access to papers depends entirely on which institution I'm affiliated with. If I weren't at HIT, half the papers I cite would be behind paywalls I couldn't afford. That's not just inconvenient — it's a structural barrier that favors researchers at wealthy institutions and disadvantages everyone else.</p>
+
+    <p>It also means that when I eventually publish, I'll face a choice: put my work behind a paywall where it reaches fewer readers but costs me nothing, or pay an APC I may not be able to afford so anyone can read it. Neither option feels right.</p>
+
+    <h2>The direction I'm watching</h2>
+    <p>Preprint servers (arXiv, bioRxiv) are already bypassing much of this. Plan S in Europe and growing funder mandates are pushing toward universal open access. The question isn't whether the system will change — it's whether the new system will replace rent-seeking with something fairer, or simply relocate the payment point.</p>
+
+    <p>I don't have answers. But as someone who both consumes and produces scientific knowledge, I think paying attention to the economics of that process is part of being a responsible researcher.</p>
+
+    <p>More adjacent-field notes at the <a href="index.html#blog" style="color:var(--s-cyan)">Blog</a>.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

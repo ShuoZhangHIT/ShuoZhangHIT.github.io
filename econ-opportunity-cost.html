@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The opportunity cost of every hour I spend in the lab · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="andromeda">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>The opportunity cost of every hour I spend in the lab</h1>
+    <div class="rule"></div>
+    <div class="meta">June 20, 2024 · Economics &amp; Decision-Making</div>
+
+    <p>I took an introductory microeconomics course in my first semester mostly to fill a general-education requirement. I expected supply-and-demand curves and indifference maps — useful, dry, forgettable. What I didn't expect was that one concept would reframe how I think about my own time as an undergraduate researcher: <strong>opportunity cost</strong>.</p>
+
+    <h2>Every hour has a price tag</h2>
+    <p>Opportunity cost is simple: the value of the next-best alternative you give up when you make a choice. When I spend four hours debugging a Python script for my interferometry simulation, the opportunity cost isn't zero just because I wasn't "paying" anything. It's whatever else I could have done with those four hours — read a paper, write up notes, sleep, or just let my brain rest.</p>
+
+    <blockquote>Economics doesn't tell you what to choose. It forces you to admit that you are always choosing something against something else.</blockquote>
+
+    <p>This sounds obvious written out. But in practice, I spent most of my first year making choices by inertia — staying late because everyone else stayed late, tweaking a plot that was already good enough because it felt productive. Opportunity cost thinking interrupted that habit.</p>
+
+    <h2>Not everything valuable can be measured</h2>
+    <p>The trap, of course, is reducing every hour to a utilitarian calculation. Some lab time isn't "efficient" but it's where you learn things no syllabus covers: how to talk to a professor when your experiment failed, how to help a teammate who's stuck, how to recognize when you're too tired to think clearly.</p>
+
+    <p>So I don't literally calculate the opportunity cost of every hour. But I do ask myself one question before committing to something: "Is this the best use of this block of time, given what I'm trying to become?" Sometimes the answer is yes even when it looks unproductive on paper.</p>
+
+    <h2>What economics gave a physics student</h2>
+    <p>A vocabulary for trade-offs. A reminder that resources (time, attention, energy) are scarce and allocation matters. And a healthy suspicion of anything that feels like "free." Nothing in research is free — you're always paying with something. The question is whether you're paying consciously or by accident.</p>
+
+    <p>More cross-field musings at the <a href="index.html#blog" style="color:var(--s-cyan)">Blog</a>.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Where optics is going: my read on the next decade · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.78;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-violet);background:rgba(177,91,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#e7dcff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="aurora">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Where optics is going: my read on the next decade</h1>
+    <div class="rule"></div>
+    <div class="meta">July 22, 2026 · The field, from a student's seat</div>
+
+    <p>Predicting an industry is a losing game, and I am still a student with more questions than
+    answers. But the optics I read in 2026 does not look like the optics in the textbooks on my
+    shelf — and the direction of that drift is, to me, the most exciting part of being in the field
+    right now. Here is how I see it reshaping itself.</p>
+
+    <h2>From "better lenses" to "smarter reconstruction"</h2>
+    <p>For a century, progress meant grinding a cleaner surface or coating a thinner film. That
+    frontier is still alive, but a second one has opened beside it: <strong>computational
+    imaging</strong>. Once you accept that the camera can recover what the optics threw away, the
+    lens becomes a sampler and the algorithm becomes the instrument. Super-resolution microscopy and
+    computational bioimaging are where this pays off first — and it is exactly the direction I am
+    pulling my own work toward.</p>
+
+    <blockquote>The next generational leap in imaging may not be a better piece of glass. It may be a better way to ask the glass what it saw.</blockquote>
+
+    <h2>Flat optics goes mainstream</h2>
+    <p>Metasurfaces — arrays of sub-wavelength scatterers we design atom by atom — have spent a decade
+    as a conference curiosity. What changed is fabrication maturity. As nanomanufacturing gets
+    cheaper and more uniform, the promise of a lens you print instead of polish edges from demo to
+    product: lighter AR visors, thinner phone cameras, lab-on-a-chip sensors. The physics I studied
+    in the "sky is blue" post is quietly becoming a supply-chain item.</p>
+
+    <h2>Photonics meets the chip</h2>
+    <p>Silicon photonics has been "five years away" for twenty years, and this time the tailwind is
+    real: AI datacenters are hitting the power and bandwidth wall that only light can move past.
+    Co-packaged optics and photonic interconnects are no longer a research flex — they are an
+    infrastructure necessity. For a student, that means nonlinear optics and on-chip devices stop
+    being esoteric and start being employable.</p>
+
+    <h2>AI-native optics</h2>
+    <p>The most surprising shift is methodological. Inverse design — let an optimizer decide the
+    geometry of a grating or a metalens — used to be exotic; now it is a default. My own
+    quasi-phase-matching work leans on exactly this. The researcher's job is migrating from
+    "derive the shape" to "specify the goal and curate the search." That is a different, and I think
+    kinder, skill set: equal parts physical intuition and taste.</p>
+
+    <h2>What I am betting on</h2>
+    <p>If I had to put my undergraduate hours where my optimism is, it would be at the seam between
+    these threads: computational imaging built on metasurface hardware, validated by nonlinear and
+    adaptive-optics tooling. That intersection is still small enough that a student can matter in
+    it, and large enough that it will still exist — and matter — when I finish a PhD.</p>
+
+    <p>This is a student's read, not a forecast. In ten years some of it will look naive. That is
+    fine; the point of being early is to be wrong cheaply and learn fast.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

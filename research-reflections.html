@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notes on doing research as an undergraduate · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.78;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="galaxy">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Notes on doing research as an undergraduate — what I wish I knew sooner</h1>
+    <div class="rule"></div>
+    <div class="meta">July 8, 2026 · Research, honestly</div>
+
+    <p>Two years into undergraduate research, I have written exactly one paper that survived peer
+    review and four that are still waiting to. I have broken more simulations than I have finished,
+    and I have spent whole weeks on an idea that a senior PhD student dismantled in a five-minute
+    conversation. If I could hand my first-year self a note, this would be it.</p>
+
+    <h2>1. Own the failure, don't hide it</h2>
+    <p>The instinct as a beginner is to present only the parts that worked. I learned the hard way
+    that the fastest path through a dead end is to say out loud <em>"this doesn't work, and here's
+    what I tried."</em> Advisors and labmates are not judges; they are the people who have already
+    hit the wall you are currently staring at. Showing the failure invites the shortcut.</p>
+
+    <blockquote>The result that didn't work is still a result — it just narrows the search space for everyone after you.</blockquote>
+
+    <h2>2. Read before you build</h2>
+    <p>My first real project was an attempt to "improve" a measurement method I barely understood. I
+    spent a month reinventing a control scheme that three papers had already covered. Now my rule is
+    simple: for every hour I plan to spend coding or building, I owe the literature at least twenty
+    minutes first. Reading is not a delay to the real work — it <em>is</em> the real work's head
+    start.</p>
+
+    <h2>3. Slow progress is still progress</h2>
+    <p>Optics experiments are humbling. An autocollimator drifts. A sample is misaligned by two
+    microns and the whole curve shifts. There were weeks where the only honest update I could give
+    was <em>"I confirmed it fails the same way three times."</em> That is data. Consistency of
+    failure is the first sign you actually understand the system enough to fix it.</p>
+
+    <h2>4. Write the paper as you go</h2>
+    <p>I used to treat writing as the final chore, something to survive after the science was "done."
+    Now I keep a running document from week one — figures, half-sentences, the occasional paragraph
+    I'll never use. When the submission deadline appears, I am assembling, not authoring. The paper
+    you start early is the paper you actually finish.</p>
+
+    <h2>5. Stay a little wide</h2>
+    <p>It is tempting, as an undergraduate, to go narrow and deep to look serious. But the ideas that
+    helped me most came from adjacent rooms — a stray-light trick borrowed from adaptive optics, a
+    reconstruction trick from computational imaging that fixed a metrology problem. The fields on my
+    site (measurement, adaptive optics, metasurfaces, nonlinear optics, computational imaging) are
+    not a résumé; they are a network I let myself wander in.</p>
+
+    <p>None of this is profound. It is just the unglamorous machinery behind the tidy author list on
+    the publications page. If you are an undergraduate somewhere staring at a simulation that won't
+    converge: keep going. The bench teaches slower than the lecture, but it teaches truer.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>

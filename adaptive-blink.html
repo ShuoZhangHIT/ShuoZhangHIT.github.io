@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Watching the atmosphere blink · Shuo Zhang</title>
+<style>
+  :root{
+    --s-red:#ff5d73;--s-orange:#ff9e57;--s-yellow:#ffd166;--s-green:#7bd389;
+    --s-cyan:#4cc9f0;--s-blue:#5b7bf0;--s-violet:#b15bf0;
+    --spectrum:linear-gradient(90deg,var(--s-red),var(--s-orange),var(--s-yellow),var(--s-green),var(--s-cyan),var(--s-blue),var(--s-violet));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html{background:#070b1a}
+  body{font-family:"Inter","Noto Serif SC",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:transparent;color:#eaf0ff;line-height:1.75;padding:0 16px}
+  .top{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(7,11,26,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);z-index:10}
+  .top__inner{max-width:760px;margin:0 auto;padding:14px 0;display:flex;align-items:center;gap:14px}
+  .top a{color:#9aa6c7;text-decoration:none;font-size:.9rem}
+  .top a:hover{color:#eaf0ff}
+  .top__brand{font-family:"Spectral",serif;font-weight:700;color:#eaf0ff}
+  .top__brand span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+  article{max-width:760px;margin:0 auto;padding:48px 0 80px}
+  .rule{height:4px;width:80px;background:var(--spectrum);border-radius:4px;margin:18px 0 30px}
+  h1{font-family:"Spectral",serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.2;margin-bottom:10px}
+  .meta{color:#9aa6c7;font-size:.88rem;margin-bottom:30px}
+  h2{font-family:"Spectral",serif;font-size:1.4rem;margin:38px 0 12px;color:#fff}
+  p{color:#cdd6ef;margin-bottom:18px;font-size:1.05rem}
+  blockquote{border-left:4px solid var(--s-cyan);background:rgba(76,201,240,.08);
+    padding:14px 20px;margin:24px 0;border-radius:0 10px 10px 0;color:#dbe4ff;font-style:italic}
+  code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px;font-size:.92em;color:#ffd166}
+  .back{display:inline-block;margin-top:30px;color:var(--s-cyan);text-decoration:none;font-weight:600}
+  .back:hover{text-decoration:underline}
+  footer{text-align:center;color:#6b769b;font-size:.82rem;padding:30px 16px;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* 博客阅读进度条（随阅读填充，与首页进度条呼应） */
+  .readbar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--spectrum);
+    z-index:30;box-shadow:0 0 10px rgba(91,123,240,.6);transition:width .08s linear}
+</style>
+</head>
+<body data-cosmo="orion">
+  <div class="readbar" id="readbar" aria-hidden="true"></div>
+  <div class="top">
+    <div class="top__inner">
+      <span class="top__brand"><span>◢</span> Shuo Zhang</span>
+      <a href="index.html">← Back to site</a>
+    </div>
+  </div>
+
+  <article>
+    <h1>Watching the atmosphere blink</h1>
+    <div class="rule"></div>
+    <div class="meta">January 28, 2025 · Adaptive Optics</div>
+
+    <p>Before I ever touched a deformable mirror, adaptive optics was a clean block diagram in a textbook: a wavefront sensor, a controller, an actuator, a loop closing back on itself. I understood it. Or I thought I did. Then I saw a live Shack–Hartmann reading and realized the atmosphere isn't a static blur — it's a living, twitching thing, reshaping itself dozens of times a second.</p>
+
+    <p>That screen full of dancing spot grids is the moment the field stopped being a diagram for me.</p>
+
+    <h2>The spots tell on the sky</h2>
+    <p>A Shack–Hartmann sensor slices the incoming wavefront into a lattice of tiny lenses, each focusing a patch of light to a spot. If the wavefront were flat, every spot would sit dead center. It never does. Each spot's offset from center is a local tilt of the wavefront, and a few hundred of those offsets reconstruct the whole distorted surface that the turbulent air has stamped onto the light.</p>
+
+    <blockquote>The genius of the sensor is that it never measures the blur. It measures the cause of the blur — the shape of the wavefront itself — and lets you undo it.</blockquote>
+
+    <p>Watching those spots jitter in real time, I finally felt why closed-loop correction has to run at kilohertz speeds. The atmosphere doesn't wait for you to think. By the time you've computed one correction, it has already become a different atmosphere.</p>
+
+    <h2>From diagram to instinct</h2>
+    <p>What changed after that day is subtle. When I read about Zernike modes now, I don't see basis functions — I see the particular ways that column of air likes to warp. When I think about a control loop, I feel the deadline. The math was always there; the <em>intuition</em> arrived only when I watched the spots move.</p>
+
+    <p>If you're curious how this ties into the rest of my work, the <a href="index.html#research" style="color:var(--s-cyan)">Research</a> section walks through the closed-loop simulation and the deformable-mirror interface I've been building on top of this first, humbling look.</p>
+
+    <a class="back" href="index.html">← Back to Shuo's site</a>
+  </article>
+
+  <footer>Built with light &amp; code · Shuo Zhang (Clyde)</footer>
+  <script>
+  (function(){
+    var bar=document.getElementById('readbar'); if(!bar) return;
+    function upd(){
+      var d=document.documentElement, max=d.scrollHeight-d.clientHeight;
+      var p=max>0?(d.scrollTop||document.body.scrollTop)/max:0;
+      bar.style.width=(p*100).toFixed(2)+'%';
+    }
+    window.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd); upd();
+  })();
+  </script>
+<script src="cosmic-bg.js"></script>
+<script src="data.js"></script>
+<script src="blog-enhance.js"></script>
+</body>
+</html>
