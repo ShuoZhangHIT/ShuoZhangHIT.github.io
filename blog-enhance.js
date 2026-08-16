@@ -180,7 +180,8 @@
 
     var lang = (document.documentElement.lang || "en").slice(0, 2);
     if (lang !== "zh") lang = "en";
-    var fieldLabel = cur.field.charAt(0).toUpperCase() + cur.field.slice(1);
+    var field = cur.field || "optics";
+    var fieldLabel = field.charAt(0).toUpperCase() + field.slice(1);
 
     var sec = document.createElement("section");
     sec.className = "related";
